@@ -48,33 +48,7 @@ public class NejikoController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        /*
-        //地上にいる場合のみ操作を行う
-        if (controller.isGrounded) //接地しているかの判定
-        {
-            //Inputを検知して前に進める
-            if  (Input.GetAxis("Vertical") > 0.0f)
-            {
-                //前進ペロシティの設定
-                moveDirection.z = Input.GetAxis("Vertical") * speedZ;
-            }
-            else
-            {
-                moveDirection.z = 0;
-            }
-
-            //方向転換
-            transform.Rotate(0, Input.GetAxis("Horizontal") * 3, 0);
-
-            //ジャンプ
-            if (Input.GetButton("Jump"))
-            {
-                moveDirection.y = speedJump;
-                animator.SetTrigger("jump");
-            }
-        }*/
-
+    { 
         //デバック用
         if (Input.GetKeyDown("left")) MoveToLeft();
         if (Input.GetKeyDown("right")) MoveToRight();
@@ -121,6 +95,7 @@ public class NejikoController : MonoBehaviour
         //気絶時の入力キャンセル
         if (IsStan()) return;
         if (controller.isGrounded && targetLane > MinLane) targetLane--; //目標レーンの変更
+        Debug.Log(targetLane);
     }
 
     //右のレーンに移動を開始
@@ -128,7 +103,8 @@ public class NejikoController : MonoBehaviour
     {
         //気絶時の入力キャンセル
         if (IsStan()) return;
-        if (controller.isGrounded && targetLane > MinLane) targetLane++; //目標レーンの変更
+        if (controller.isGrounded && targetLane < MaxLane) targetLane++; //目標レーンの変更
+        Debug.Log(targetLane);
     }
 
     //ジャンプ関数
