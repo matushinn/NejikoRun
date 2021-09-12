@@ -95,7 +95,6 @@ public class NejikoController : MonoBehaviour
         //気絶時の入力キャンセル
         if (IsStan()) return;
         if (controller.isGrounded && targetLane > MinLane) targetLane--; //目標レーンの変更
-        Debug.Log(targetLane);
     }
 
     //右のレーンに移動を開始
@@ -104,7 +103,6 @@ public class NejikoController : MonoBehaviour
         //気絶時の入力キャンセル
         if (IsStan()) return;
         if (controller.isGrounded && targetLane < MaxLane) targetLane++; //目標レーンの変更
-        Debug.Log(targetLane);
     }
 
     //ジャンプ関数
